@@ -1,0 +1,37 @@
+#Download do kafka
+https://www.apache.org/dyn/closer.cgi?path=/kafka/3.2.1/kafka_2.13-3.2.1.tgz
+
+# Iniciando zookeper
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+# Iniciando kafka
+bin/kafka-server-start.sh config/server.properties
+
+#criando topico
+bin/kafka-topics.sh --create --topic localizacao_ISS --bootstrap-server localhost:9092
+
+#Consumindo Topico
+bin/kafka-console-consumer.sh --topic localizacao_ISS --from-beginning --bootstrap-server localhost:9092
+
+#escrevendo no topico
+bin/kafka-console-producer.sh --topic localizacao_ISS --bootstrap-server localhost:9092
+
+
+#Dependencias para conexão kafka
+<dependencies>
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>3.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+  </dependencies>
